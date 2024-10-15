@@ -15,6 +15,11 @@ composer require zero-to-prod/data-model-factory
 
 For easier model instantiation, we recommend adding the [DataModel](https://github.com/zero-to-prod/data-model) trait.
 
+### Additional Packages
+- [DataModel](https://github.com/zero-to-prod/data-model): Transform data into a class.
+- [DataModelHelper](https://github.com/zero-to-prod/data-model-helper): Helpers for a `DataModel`.
+- [Transformable](https://github.com/zero-to-prod/transformable): Transform a `DataModel` into different types.
+
 ```bash
 composer require zero-to-prod/data-model
 ```
