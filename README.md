@@ -20,10 +20,6 @@ For easier model instantiation, we recommend adding the [DataModel](https://gith
 - [DataModelHelper](https://github.com/zero-to-prod/data-model-helper): Helpers for a `DataModel`.
 - [Transformable](https://github.com/zero-to-prod/transformable): Transform a `DataModel` into different types.
 
-```bash
-composer require zero-to-prod/data-model
-```
-
 ## Usage
 
 1. Include the Factory trait in your factory class.
