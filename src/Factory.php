@@ -43,7 +43,10 @@ namespace Zerotoprod\DataModelFactory;
  * ```
  *
  * @link https://github.com/zero-to-prod/data-model-factory
+ *
  * @see  https://github.com/zero-to-prod/data-model
+ * @see  https://github.com/zero-to-prod/data-model-helper
+ * @see  https://github.com/zero-to-prod/transformable
  */
 trait Factory
 {
@@ -51,7 +54,12 @@ trait Factory
      * Stores the values for the class.
      *
      * @var array
+     *
      * @link https://github.com/zero-to-prod/data-model-factory
+     *
+     * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
      */
     private $context;
 
@@ -59,6 +67,10 @@ trait Factory
      * Values to instantiate the class.
      *
      * @link https://github.com/zero-to-prod/data-model-factory
+     *
+     * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
      */
     public function __construct(array $context = [])
     {
@@ -71,6 +83,10 @@ trait Factory
      * @return array<string, mixed>
      *
      * @link https://github.com/zero-to-prod/data-model-factory
+     *
+     * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
      */
     private function definition(): array
     {
@@ -83,7 +99,10 @@ trait Factory
      * @return self
      *
      * @link https://github.com/zero-to-prod/data-model-factory
+     *
      * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
      */
     public static function factory(array $context = []): self
     {
@@ -94,7 +113,10 @@ trait Factory
      * Instantiates the class using `$this->context`.
      *
      * @link https://github.com/zero-to-prod/data-model-factory
+     *
      * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
      */
     private function instantiate()
     {
@@ -112,7 +134,10 @@ trait Factory
      * ```
      *
      * @link https://github.com/zero-to-prod/data-model-factory
+     *
      * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
      */
     public function make()
     {
@@ -141,7 +166,10 @@ trait Factory
      * @return self
      *
      * @link https://github.com/zero-to-prod/data-model-factory
+     *
      * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
      */
     private function state($state): self
     {
