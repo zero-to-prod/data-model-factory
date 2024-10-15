@@ -2,8 +2,6 @@
 
 namespace Zerotoprod\DataModelFactory;
 
-use Tests\Unit\Override\UserFactory;
-
 /**
  * Factory for Instantiating a Class.
  *
@@ -64,7 +62,7 @@ trait Factory
      */
     public function __construct(array $context = [])
     {
-        $this->context = $context;
+        $this->context = array_merge($this->definition(), $context);
     }
 
     /**
