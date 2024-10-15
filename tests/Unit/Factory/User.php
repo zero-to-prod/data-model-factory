@@ -12,9 +12,4 @@ class User
     public const last_name = 'last_name';
     public $first_name;
     public $last_name;
-
-    public static function factory(array $states = []): UserFactory
-    {
-        return new UserFactory($states);
-    }
 }

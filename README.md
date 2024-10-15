@@ -32,12 +32,8 @@ class User
 
     public $first_name;
     public $last_name;
-
-    public static function factory(array $states): UserFactory
-    {
-        return new UserFactory($states);
-    }
 }
+
 class UserFactory
 {
     use \Zerotoprod\DataModelFactory\Factory;
@@ -70,7 +66,7 @@ class UserFactory
     }
 }
 
-$User = User::factory([User::last_name => 'Doe'])
+$User = UserFactory::factory([User::last_name => 'Doe'])
             ->setFirstName('Jane')
             ->make();
 

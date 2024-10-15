@@ -13,7 +13,7 @@ class FactoryTest extends TestCase
      */
     public function from(): void
     {
-        $User = User::factory()->make();
+        $User = UserFactory::factory()->make();
 
         self::assertEquals('John', $User->first_name);
         self::assertEquals('N/A', $User->last_name);

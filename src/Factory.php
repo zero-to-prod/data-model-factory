@@ -2,6 +2,8 @@
 
 namespace Zerotoprod\DataModelFactory;
 
+use Tests\Unit\Override\UserFactory;
+
 /**
  * Factory for Instantiating a Class.
  *
@@ -43,7 +45,7 @@ namespace Zerotoprod\DataModelFactory;
  * ```
  *
  * @link https://github.com/zero-to-prod/data-model-factory
- * @see https://github.com/zero-to-prod/data-model
+ * @see  https://github.com/zero-to-prod/data-model
  */
 trait Factory
 {
@@ -75,6 +77,19 @@ trait Factory
     private function definition(): array
     {
         return [];
+    }
+
+    /**
+     * Get a new factory instance for the model
+     *
+     * @return self
+     *
+     * @link https://github.com/zero-to-prod/data-model-factory
+     * @see  https://github.com/zero-to-prod/data-model
+     */
+    public static function factory(array $context = []): self
+    {
+        return new static($context);
     }
 
     /**
