@@ -16,13 +16,8 @@ class UserFactory
         ];
     }
 
-    private function instantiate()
-    {
-        return new User($this->context['first_name'], $this->context['last_name']);
-    }
-
     public function make(): User
     {
-        return $this->instantiate();
+        return new User($this->context['first_name'], $this->context['last_name']);
     }
 }

@@ -96,7 +96,7 @@ echo $User->last_name;  // 'Doe'
 
 ### Custom Class Instantiation
 
-To customize instantiation, override the `instantiate()` method in your factory and call it within `make()`.
+To customize instantiation, override the `make()` method.
 
 ```php
 class User
@@ -118,14 +118,9 @@ class UserFactory
         ];
     }
 
-    private function instantiate(): User
+    private function make(): User
     {
         return new User($this->context['first_name'], $this->context['last_name']);
-    }
-
-    public function make(): User
-    {
-        return $this->instantiate();
     }
 }
 
