@@ -18,11 +18,22 @@ composer require zero-to-prod/data-model-factory
 For easier model instantiation, we recommend adding the [DataModel](https://github.com/zero-to-prod/data-model) trait.
 
 ### Additional Packages
+
 - [DataModel](https://github.com/zero-to-prod/data-model): Transform data into a class.
 - [DataModelHelper](https://github.com/zero-to-prod/data-model-helper): Helpers for a `DataModel`.
 - [Transformable](https://github.com/zero-to-prod/transformable): Transform a `DataModel` into different types.
 
 ## Usage
+
+This example makes use of the [DataModel](https://github.com/zero-to-prod/data-model) trait to instantiate the `User` class.
+
+You can install the DataModel package like this:
+
+```bash
+composer require zero-to-prod/data-model
+```
+
+If you don't want to use this trait, you can [customize the class instantiation](#custom-class-instantiation) this way.
 
 1. Include the Factory trait in your factory class.
 2. Set the `$model` property to the class you want to instantiate.
@@ -77,6 +88,43 @@ echo $User->first_name; // 'Jane'
 echo $User->last_name;  // 'Doe'
 ```
 
-### Overriding Class Instantiation
+### Custom Class Instantiation
 
 To customize instantiation, override the `instantiate()` method in your factory and call it within `make()`.
+
+```php
+class User
+{
+    public function __construct(public string $fist_name, public string $last_name)
+    {
+    }
+}
+
+class UserFactory
+{
+    use \Zerotoprod\DataModelFactory\Factory;
+
+    private function definition(): array
+    {
+        return [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
+    }
+
+    private function instantiate(): User
+    {
+        return new User($this->context['first_name'], $this->context['last_name']);
+    }
+
+    public function make(): User
+    {
+        return $this->instantiate();
+    }
+}
+
+$User = UserFactory::factory()->make();
+
+echo $User->first_name; // 'Jane'
+echo $User->last_name;  // 'Doe'
+```
