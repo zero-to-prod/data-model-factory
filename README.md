@@ -46,6 +46,11 @@ class User
 
     public $first_name;
     public $last_name;
+    
+    public static function factory(array $states = []): UserFactory
+    {
+        return new UserFactory($states);
+    }
 }
 
 class UserFactory
@@ -80,9 +85,10 @@ class UserFactory
     }
 }
 
-$User = UserFactory::factory([User::last_name => 'Doe'])
+$User = User::factory([User::last_name => 'Doe'])
             ->setFirstName('Jane')
             ->make();
+// UserFactory::factory([User::last_name => 'Doe'])->make(); Also works
 
 echo $User->first_name; // 'Jane'
 echo $User->last_name;  // 'Doe'
