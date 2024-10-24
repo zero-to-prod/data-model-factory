@@ -20,4 +20,32 @@ class FactoryTest extends TestCase
         self::assertEquals('Jim', $User->first_name);
         self::assertEquals('N/A', $User->last_name);
     }
+
+    /**
+     * @test
+     *
+     * @see Factory
+     */
+    public function nested_element(): void
+    {
+        $User = User::factory()
+            ->setAddress('bogus')
+            ->make();
+
+        self::assertEquals('bogus', $User->address['street']);
+    }
+
+    /**
+     * @test
+     *
+     * @see Factory
+     */
+    public function nested_array(): void
+    {
+        $User = User::factory()
+            ->setShippingAddress(['bogus' => 'Bogus'])
+            ->make();
+
+        self::assertEquals(['bogus' => 'Bogus'], $User->shipping_address);
+    }
 }
