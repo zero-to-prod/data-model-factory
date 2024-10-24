@@ -1,7 +1,7 @@
 {
   "type": "library",
   "name": "zero-to-prod/data-model-factory",
-  "description": "Factory for Instantiating a Class",
+  "description": "Build a Factory for Anything",
   "keywords": [
     "zero-to-prod",
     "data-model-factory"

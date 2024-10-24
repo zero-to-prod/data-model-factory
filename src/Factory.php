@@ -200,4 +200,43 @@ trait Factory
 
         return $this;
     }
+
+    /**
+     * Mutate the context before instantiating the class.
+     *
+     * ```
+     *   public function setValue($value): self
+     *   {
+     *        return $this->state('value.nested', $value);
+     *   }
+     *
+     *  public function setValue($value): self
+     *  {
+     *       return $this->state(['value' => $value]);
+     *  }
+     *
+     *  public function setValueWithClosure($value): self
+     *  {
+     *      return $this->state(function ($context) use ($value) {
+     *          return ['value' => $value];
+     *      });
+     *  }
+     * ```
+     *
+     * @param  callable|array  $state
+     *
+     * @return self
+     *
+     * @link https://github.com/zero-to-prod/data-model-factory
+     *
+     * @see  https://github.com/zero-to-prod/data-model
+     * @see  https://github.com/zero-to-prod/data-model-helper
+     * @see  https://github.com/zero-to-prod/transformable
+     */
+    public function set($state, $value = null): self
+    {
+        $this->state($state, $value);
+
+        return $this;
+    }
 }
