@@ -1,11 +1,11 @@
 # `Zerotoprod\DataModelFactory`
 
 [![Repo](https://img.shields.io/badge/github-gray?logo=github)](https://github.com/zero-to-prod/data-model-factory)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zero-to-prod/data-model-factory/phpunit.yml?label=tests)](https://github.com/zero-to-prod/data-model-factory/actions)
+[![tests](https://img.shields.io/github/actions/workflow/status/zero-to-prod/data-model-factory/test.yml?label=tests)](https://github.com/zero-to-prod/data-model-factory/actions)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/zero-to-prod/data-model-factory?color=blue)](https://packagist.org/packages/zero-to-prod/data-model-factory/stats)
+[![php](https://img.shields.io/packagist/php-v/zero-to-prod/data-model-factory.svg?color=purple)](https://packagist.org/packages/zero-to-prod/data-model-factory/stats)
 [![Packagist Version](https://img.shields.io/packagist/v/zero-to-prod/data-model-factory?color=f28d1a)](https://packagist.org/packages/zero-to-prod/data-model-factory)
-[![GitHub repo size](https://img.shields.io/github/repo-size/zero-to-prod/data-model-factory)](https://github.com/zero-to-prod/data-model-factory)
-[![License](https://img.shields.io/packagist/l/zero-to-prod/data-model-factory?color=red)](https://github.com/zero-to-prod/data-model-factory/blob/main/LICENSE.md)
+[![License](https://img.shields.io/packagist/l/zero-to-prod/data-model-factory?color=pink)](https://github.com/zero-to-prod/data-model-factory/blob/main/LICENSE.md)
 
 ## Installation
 
@@ -39,6 +39,8 @@ If you don't want to use this trait, you can [customize the class instantiation]
 2. Set the `$model` property to the class you want to instantiate.
 3. Implement a `definition()` method that returns an array of default values.
 
+> NOTE: The `$this->state()` method accepts dot syntax, arrays, or a callback.
+
 ```php
 class User
 {
@@ -46,6 +48,7 @@ class User
 
     public $first_name;
     public $last_name;
+    public $address;
     
     public static function factory(array $states = []): UserFactory
     {
@@ -63,8 +66,16 @@ class UserFactory
     {
         return [
             'first_name' => 'John',
-            'last_name' => 'N/A'
+            'last_name' => 'N/A',
+            'address' => [
+                'street' => 'Memory Lane'
+            ]
         ];
+    }
+    
+    public function setStreet(string $value): self
+    {
+        return $this->state('address.street', $value);
     }
     
     public function setFirstName(string $value): self
