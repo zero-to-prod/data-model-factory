@@ -148,6 +148,11 @@ trait Factory
      * Mutate the context before instantiating the class.
      *
      * ```
+     *   public function setValue($value): self
+     *   {
+     *        return $this->state('value.nested', $value);
+     *   }
+     *
      *  public function setValue($value): self
      *  {
      *       return $this->state(['value' => $value]);
@@ -171,8 +176,23 @@ trait Factory
      * @see  https://github.com/zero-to-prod/data-model-helper
      * @see  https://github.com/zero-to-prod/transformable
      */
-    private function state($state): self
+    private function state($state, $value = null): self
     {
+        if (is_string($state)) {
+            $ref = &$this->context;
+
+            foreach (explode('.', $state) as $key) {
+                if (!isset($ref[$key]) || !is_array($ref[$key])) {
+                    $ref[$key] = [];
+                }
+                $ref = &$ref[$key];
+            }
+
+            $ref = $value;
+
+            return $this;
+        }
+
         $this->context = array_merge(
             $this->context,
             is_callable($state) ? $state($this->context) : $state
