@@ -1,10 +1,6 @@
 # Zerotoprod\DataModelFactory
 
-<p style="text-align: center;">
-
 ![](./logo.png)
-
-</p>
 
 [![Repo](https://img.shields.io/badge/github-gray?logo=github)](https://github.com/zero-to-prod/data-model-factory)
 [![tests](https://img.shields.io/github/actions/workflow/status/zero-to-prod/data-model-factory/test.yml?label=tests)](https://github.com/zero-to-prod/data-model-factory/actions)
@@ -17,10 +13,10 @@
 
 This package is a fresh take on how to set the state of your DTOs in a simple and delightful way.
 
-The API is takes some hints from Laravel's Eloquent [Factories](https://laravel.com/docs/11.x/eloquent-factories), but it adds some niceties such as
+The API is takes some hints from Laravel's Eloquent [Factories](https://laravel.com/docs/11.x/eloquent-factories), but adds some niceties such as
 setting state via dot syntax and using the [set()](#using-the-set-method) helper method on the fly.
 
-This package does not require any other dependencies, allowing you to make a factory to build the state of any class.
+This package does not require any other dependencies, allowing you to make a factory for anything.
 
 The examples use the [DataModel](https://github.com/zero-to-prod/data-model) trait, making easier to build your DTOs, but it is not required.
 
@@ -31,8 +27,6 @@ Install the package via Composer:
 ```bash
 composer require zero-to-prod/data-model-factory
 ```
-
-For easier model instantiation, we recommend adding the [DataModel](https://github.com/zero-to-prod/data-model) trait.
 
 ### Additional Packages
 
@@ -56,7 +50,7 @@ If you don't want to use this trait, you can [customize the class instantiation]
 2. Set the `$model` property to the class you want to instantiate.
 3. Implement a `definition()` method that returns an array of default values.
 
-> NOTE: The `$this->state()` method accepts dot syntax, arrays, or a callback.
+4. NOTE: The `$this->state()` method accepts dot syntax, arrays, or a callback.
 
 ```php
 class User
@@ -77,6 +71,7 @@ class UserFactory
 {
     use \Zerotoprod\DataModelFactory\Factory;
 
+    /* This is the class to be instantiated with the make() method */
     protected $model = User::class;
 
     protected function definition(): array
@@ -92,21 +87,25 @@ class UserFactory
     
     public function setStreet(string $value): self
     {
+        /** Dot Syntax */
         return $this->state('address.street', $value);
     }
     
     public function setFirstName(string $value): self
     {
+        /** Array Syntax */
         return $this->state(['first_name' => $value]);
     }
     
     public function setLastName(): self
     {
+        /** Closure Syntax */
         return $this->state(function ($context) {
             return ['first_name' => $context['last_name']];
         });
     }
     
+    /* Optionally implement for better static analysis */
     public function make(): User
     {
         return $this->instantiate();
@@ -116,7 +115,8 @@ class UserFactory
 $User = UserFactory::factory([User::last_name => 'Doe'])
             ->setFirstName('Jane')
             ->make();
-// User::factory([User::last_name => 'Doe'])->make(); Also works for this example
+            
+User::factory([User::last_name => 'Doe'])->make(); // Also works for this example
 
 echo $User->first_name; // 'Jane'
 echo $User->last_name;  // 'Doe'
@@ -135,7 +135,7 @@ $User = User::factory()
             ->set(function ($context) {
                 return ['surname' => $context['last_name']];
             })
-            ->set('address.postal_code', '46789') // dot syntax 
+            ->set('address.postal_code', '46789') // dot syntax for nested values 
             ->make();
 
 echo $User->first_name;             // John
