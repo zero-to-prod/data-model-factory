@@ -1,42 +1,38 @@
-name: PHPUnit Tests
+name: tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
-
-permissions:
-  contents: write
+    branches: [main]
 
 jobs:
-  phpunit:
+  test:
     runs-on: ubuntu-latest
-
     services:
       docker:
         image: docker:20.10.7
         options: --privileged
 
+    strategy:
+      matrix:
+        php-version: [php71, php72, php73, php74, php80, php81, php82, php83]
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate composer.json and composer.lock
+      - name: Validate composer files
         run: composer validate --strict
 
-      - name: Cache Composer packages
-        id: composer-cache
+      - name: Cache Composer dependencies
         uses: actions/cache@v4
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-
 
-      - name: Install Composer dependencies
-        run: docker compose run --rm php71composer composer install --prefer-dist --no-progress --no-suggest
+      - name: Install dependencies
+        run: docker compose run --rm -v ${{ github.workspace }}/test-output:/app/test-output ${{ matrix.php-version }}composer composer install --prefer-dist
 
-      - name: Run PHPUnit tests
-        run: docker compose run --rm php71 vendor/bin/phpunit
+      - name: Run tests
+        run: docker compose run --rm -v ${{ github.workspace }}/test-output:/app/test-output ${{ matrix.php-version }} vendor/bin/phpunit
