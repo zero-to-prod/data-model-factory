@@ -1,7 +1,7 @@
 # run-tests.sh
 set -e
 
-php_versions=("php71" "php72" "php73" "php74" "php80" "php81" "php82" "php83")
+php_versions=("php82" "php81" "php81" "php80" "php74" "php73" "php72" "php71")
 
 for version in "${php_versions[@]}"; do
   echo "Setting up environment..."
