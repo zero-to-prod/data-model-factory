@@ -18,7 +18,7 @@ class UserFactory
 
     private function instantiate()
     {
-        return $this->model::from([User::DateTime => new DateTime($this->context['time'])]);
+        return $this->model::from([User::DateTime => new DateTime($this->context[User::DateTime])]);
     }
 
     public function make(): User
