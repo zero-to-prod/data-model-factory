@@ -17,8 +17,8 @@ class User
     public $address;
     public $shipping_address;
 
-    public static function factory(array $states = []): UserFactory
+    public static function factory(array $context = []): UserFactory
     {
-        return new UserFactory($states);
+        return new UserFactory($context);
     }
 }
