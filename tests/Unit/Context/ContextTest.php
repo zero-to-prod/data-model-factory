@@ -18,4 +18,17 @@ class ContextTest extends TestCase
         self::assertEquals('John', $User->first_name);
         self::assertEquals('Doe', $User->last_name);
     }
+
+    /**
+     * @test
+     *
+     * @see Factory
+     */
+    public function context(): void
+    {
+        $User = User::factory([User::last_name => 'Doe'])->context();
+
+        self::assertEquals('John', $User[User::first_name]);
+        self::assertEquals('Doe', $User[User::last_name]);
+    }
 }

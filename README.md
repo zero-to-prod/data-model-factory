@@ -179,3 +179,55 @@ $User = UserFactory::factory()->make();
 echo $User->first_name; // 'Jane'
 echo $User->last_name;  // 'Doe'
 ```
+
+## Using the `merge()` Method
+
+Sometimes it is useful to merge new values into the current context of the factory.
+
+Use the `merge()` method to merge any new values and update the factory context.
+
+```php
+class UserFactory
+{
+    use \Zerotoprod\DataModelFactory\Factory;
+
+    private function definition(): array
+    {
+        return [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
+    }
+}
+
+$User = UserFactory::factory()
+    ->merge(['first_name' => 'Jane'])
+    ->make();
+
+echo $User->first_name; // 'Jane'
+echo $User->last_name;  // 'Doe'
+```
+
+## Using the `context()` Method
+
+Use the `context()` method to get the context of the factory.
+
+```php
+class UserFactory
+{
+    use \Zerotoprod\DataModelFactory\Factory;
+
+    private function definition(): array
+    {
+        return [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
+    }
+}
+
+$User = UserFactory::factory()->context();
+
+echo $User['first_name']; // 'John'
+echo $User['last_name'];  // 'Doe'
+```
