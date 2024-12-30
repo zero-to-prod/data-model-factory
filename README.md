@@ -9,8 +9,6 @@
 [![Packagist Version](https://img.shields.io/packagist/v/zero-to-prod/data-model-factory?color=f28d1a)](https://packagist.org/packages/zero-to-prod/data-model-factory)
 [![License](https://img.shields.io/packagist/l/zero-to-prod/data-model-factory?color=pink)](https://github.com/zero-to-prod/data-model-factory/blob/main/LICENSE.md)
 
-Zerotoprod\DataModelFactory
-
 - [Introduction](#introduction)
 - [Installation](#installation)
     - [Additional Packages](#additional-packages)
