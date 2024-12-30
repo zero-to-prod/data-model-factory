@@ -9,12 +9,21 @@
 [![Packagist Version](https://img.shields.io/packagist/v/zero-to-prod/data-model-factory?color=f28d1a)](https://packagist.org/packages/zero-to-prod/data-model-factory)
 [![License](https://img.shields.io/packagist/l/zero-to-prod/data-model-factory?color=pink)](https://github.com/zero-to-prod/data-model-factory/blob/main/LICENSE.md)
 
+- [Introduction](#introduction)
+- [Installation](#installation)
+    - [Additional Packages](#additional-packages)
+- [Usage](#usage)
+    - [Custom Class Instantiation](#custom-class-instantiation)
+    - [The `set()` Method](#the-set-method)
+    - [The `merge()` Method](#the-merge-method)
+    - [The `context()` Method](#the-context-method)
+
 ## Introduction
 
 This package is a fresh take on how to set the state of your DTOs in a simple and delightful way.
 
 The API is takes some hints from Laravel's Eloquent [Factories](https://laravel.com/docs/11.x/eloquent-factories), but adds some niceties such as
-setting state via dot syntax and using the [set()](#using-the-set-method) helper method on the fly.
+setting state via dot syntax and using the [set()](#the-set-method) helper method on the fly.
 
 This package does not require any other dependencies, allowing you to make a factory for anything.
 
@@ -122,29 +131,7 @@ echo $User->first_name; // 'Jane'
 echo $User->last_name;  // 'Doe'
 ```
 
-## Using the `set()` Method
-
-You can use the `set()` helper method to fluently modify the state of your model in a convenient way.
-
-This is a great way to modify a model without having to implement a method in the factory.
-
-```php
-$User = User::factory()
-            ->set('first_name', 'John')
-            ->set(['last_name' => 'Doe'])
-            ->set(function ($context) {
-                return ['surname' => $context['last_name']];
-            })
-            ->set('address.postal_code', '46789') // dot syntax for nested values 
-            ->make();
-
-echo $User->first_name;             // John
-echo $User->last_name;              // Doe
-echo $User->surname;                // Doe
-echo $User->address->postal_code;   // 46789
-```
-
-## Custom Class Instantiation
+### Custom Class Instantiation
 
 To customize instantiation, override the `make()` method.
 
@@ -178,4 +165,78 @@ $User = UserFactory::factory()->make();
 
 echo $User->first_name; // 'Jane'
 echo $User->last_name;  // 'Doe'
+```
+
+### The `set()` Method
+
+You can use the `set()` helper method to fluently modify the state of your model in a convenient way.
+
+This is a great way to modify a model without having to implement a method in the factory.
+
+```php
+$User = User::factory()
+            ->set('first_name', 'John')
+            ->set(['last_name' => 'Doe'])
+            ->set(function ($context) {
+                return ['surname' => $context['last_name']];
+            })
+            ->set('address.postal_code', '46789') // dot syntax for nested values 
+            ->make();
+
+echo $User->first_name;             // John
+echo $User->last_name;              // Doe
+echo $User->surname;                // Doe
+echo $User->address->postal_code;   // 46789
+```
+
+### The `merge()` Method
+
+Sometimes it is useful to merge new values into the current context of the factory.
+
+Use the `merge()` method to merge any new values and update the factory context.
+
+```php
+class UserFactory
+{
+    use \Zerotoprod\DataModelFactory\Factory;
+
+    private function definition(): array
+    {
+        return [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
+    }
+}
+
+$User = UserFactory::factory()
+    ->merge(['first_name' => 'Jane'])
+    ->make();
+
+echo $User->first_name; // 'Jane'
+echo $User->last_name;  // 'Doe'
+```
+
+### The `context()` Method
+
+Use the `context()` method to get the context of the factory.
+
+```php
+class UserFactory
+{
+    use \Zerotoprod\DataModelFactory\Factory;
+
+    private function definition(): array
+    {
+        return [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
+    }
+}
+
+$User = UserFactory::factory()->context();
+
+echo $User['first_name']; // 'John'
+echo $User['last_name'];  // 'Doe'
 ```

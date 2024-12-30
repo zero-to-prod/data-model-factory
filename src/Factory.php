@@ -45,8 +45,6 @@ namespace Zerotoprod\DataModelFactory;
  * @link https://github.com/zero-to-prod/data-model-factory
  *
  * @see  https://github.com/zero-to-prod/data-model
- * @see  https://github.com/zero-to-prod/data-model-helper
- * @see  https://github.com/zero-to-prod/transformable
  */
 trait Factory
 {
@@ -58,8 +56,6 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     private $context;
 
@@ -69,8 +65,6 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     public function __construct(array $context = [])
     {
@@ -85,12 +79,38 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     private function definition(): array
     {
         return [];
+    }
+
+    /**
+     * Merge the context with the new values.
+     *
+     * @link https://github.com/zero-to-prod/data-model-factory
+     *
+     * @see  https://github.com/zero-to-prod/data-model
+     */
+    public function merge(array $definition = []): self
+    {
+        $this->context = array_merge($this->context, $definition);
+
+        return $this;
+    }
+
+    /**
+     * Merge the context with the new values and return the new context.
+     *
+     * @return array<string, mixed>
+     *
+     * @link https://github.com/zero-to-prod/data-model-factory
+     *
+     * @see  https://github.com/zero-to-prod/data-model
+     */
+    public function context(): array
+    {
+        return $this->context;
     }
 
     /**
@@ -101,8 +121,6 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     public static function factory(array $context = []): self
     {
@@ -115,8 +133,6 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     private function instantiate()
     {
@@ -136,8 +152,6 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     public function make()
     {
@@ -173,8 +187,6 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     private function state($state, $value = null): self
     {
@@ -230,8 +242,6 @@ trait Factory
      * @link https://github.com/zero-to-prod/data-model-factory
      *
      * @see  https://github.com/zero-to-prod/data-model
-     * @see  https://github.com/zero-to-prod/data-model-helper
-     * @see  https://github.com/zero-to-prod/transformable
      */
     public function set($state, $value = null): self
     {
