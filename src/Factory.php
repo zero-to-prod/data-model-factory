@@ -10,9 +10,9 @@ namespace Zerotoprod\DataModelFactory;
  *  {
  *      use Factory;
  *
- *      protected $model = User::class;
+ *      public $model = User::class;
  *
- *      protected function definition(): array
+ *      public function definition(): array
  *      {
  *          return [
  *              'first_name' => 'John'
