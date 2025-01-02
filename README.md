@@ -8,6 +8,9 @@
 [![php](https://img.shields.io/packagist/php-v/zero-to-prod/data-model-factory.svg?color=purple)](https://packagist.org/packages/zero-to-prod/data-model-factory/stats)
 [![Packagist Version](https://img.shields.io/packagist/v/zero-to-prod/data-model-factory?color=f28d1a)](https://packagist.org/packages/zero-to-prod/data-model-factory)
 [![License](https://img.shields.io/packagist/l/zero-to-prod/data-model-factory?color=pink)](https://github.com/zero-to-prod/data-model-factory/blob/main/LICENSE.md)
+[![wakatime](https://wakatime.com/badge/github/zero-to-prod/data-model-factory.svg)](https://wakatime.com/badge/github/zero-to-prod/data-model-factory)
+
+## Contents
 
 - [Introduction](#introduction)
 - [Installation](#installation)
