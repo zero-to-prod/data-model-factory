@@ -9,6 +9,15 @@
 /LICENSE.md               export-ignore
 /logo.png                 export-ignore
 /phpunit.xml              export-ignore
+/phpunit71.xml            export-ignore
+/phpunit72.xml            export-ignore
+/phpunit73.xml            export-ignore
+/phpunit74.xml            export-ignore
+/phpunit80.xml            export-ignore
+/phpunit81.xml            export-ignore
+/phpunit82.xml            export-ignore
+/phpunit83.xml            export-ignore
+/phpunit84.xml            export-ignore
 /README.md                export-ignore
 /SECURITY.md              export-ignore
 /test.sh                  export-ignore
