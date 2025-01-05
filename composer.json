@@ -7,6 +7,13 @@
     "data-model-factory"
   ],
   "homepage": "https://github.com/zero-to-prod/data-model-factory",
+  "support": {
+    "email": "dave0016@gmail.com",
+    "issues": "https://github.com/zero-to-prod/data-model-factoryissues",
+    "source": "https://github.com/zero-to-prod/data-model",
+    "docs": "https://zero-to-prod.github.io/data-model-factory",
+    "security": "https://github.com/zero-to-prod/data-model-factoryblob/main/SECURITY.md"
+  },
   "license": "MIT",
   "readme": "./README.md",
   "authors": [
