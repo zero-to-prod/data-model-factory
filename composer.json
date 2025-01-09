@@ -30,45 +30,6 @@
       "url": "https://github.com/sponsors/zero-to-prod"
     }
   ],
-  "scripts": {
-    "test-all": [
-      "sh test.sh"
-    ],
-    "docker": [
-      "docker compose run --rm "
-    ],
-    "test71": [
-      "docker compose run --rm php71 ./vendor/bin/phpunit --configuration phpunit71.xml"
-    ],
-    "test72": [
-      "docker compose run --rm php72 ./vendor/bin/phpunit --configuration phpunit72.xml"
-    ],
-    "test73": [
-      "docker compose run --rm php73 ./vendor/bin/phpunit --configuration phpunit73.xml"
-    ],
-    "test74": [
-      "docker compose run --rm php74 ./vendor/bin/phpunit --configuration phpunit74.xml"
-    ],
-    "test80": [
-      "docker compose run --rm php80 ./vendor/bin/phpunit --configuration phpunit80.xml"
-    ],
-    "test81": [
-      "docker compose run --rm php81 ./vendor/bin/phpunit --configuration phpunit81.xml"
-    ],
-    "test82": [
-      "docker compose run --rm php82 ./vendor/bin/phpunit --configuration phpunit82.xml"
-    ],
-    "test83": [
-      "docker compose run --rm php83 ./vendor/bin/phpunit --configuration phpunit83.xml"
-    ],
-    "test84": [
-      "docker compose run --rm php84 ./vendor/bin/phpunit --configuration phpunit84.xml"
-    ]
-  },
-  "scripts-descriptions": {
-    "test-all": "tests all php versions",
-    "docker": "runs a docker container"
-  },
   "require": {
     "php": ">=7.1.0"
   },

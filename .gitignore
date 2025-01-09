@@ -4,12 +4,5 @@ composer.lock
 .phpunit.result.cache
 .php-cs-fixer.cache
 /.phpunit.cache/test-results
-/vendor-php71/
-/vendor-php72/
-/vendor-php73/
-/vendor-php74/
-/vendor-php80/
-/vendor-php81/
-/vendor-php82/
-/vendor-php83/
-/vendor-php84/
+.vendor/
+.env

@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
-php_versions=("84" "83" "82" "81" "80" "74" "73" "72" "71")
+PHP_VERSIONS=("8.4" "8.3" "8.2" "8.1" "8.0" "7.4" "7.3" "7.2" "7.1")
 
-for version in "${php_versions[@]}"; do
-  docker compose run --rm php"${version}composer" composer update --no-cache
+for PHP_VERSION in "${PHP_VERSIONS[@]}"; do
 
-  if ! docker compose run --rm php"${version}" vendor/bin/phpunit --configuration phpunit"${version}".xml; then
+  sh dock "composer${PHP_VERSION}" composer update
+
+  if ! sh dock "php${PHP_VERSION}" ./vendor/bin/phpunit --configuration "docker/${PHP_VERSION}/phpunit.xml"
+  then
     exit 1
   fi
 done
