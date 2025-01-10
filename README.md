@@ -11,10 +11,10 @@
 [![wakatime](https://wakatime.com/badge/github/zero-to-prod/data-model-factory.svg)](https://wakatime.com/badge/github/zero-to-prod/data-model-factory)
 [![Hits-of-Code](https://hitsofcode.com/github/zero-to-prod/data-model-factory?branch=main)](https://hitsofcode.com/github/zero-to-prod/data-model-factory/view?branch=main)
 
-
 ## Contents
 
 - [Introduction](#introduction)
+- [Requirements](#requirements)
 - [Installation](#installation)
     - [Additional Packages](#additional-packages)
 - [Usage](#usage)
@@ -22,6 +22,12 @@
     - [The `set()` Method](#the-set-method)
     - [The `merge()` Method](#the-merge-method)
     - [The `context()` Method](#the-context-method)
+- [Local Development](#local-development)
+    - [Prerequisites](#prerequisites)
+    - [Initializing](#initializing)
+    - [Testing](#testing)
+    - [Configuration](#configuration)
+- [Contributing](#contributing)
 
 ## Introduction
 
@@ -34,6 +40,10 @@ This package does not require any other dependencies, allowing you to make a fac
 
 The examples use the [DataModel](https://github.com/zero-to-prod/data-model) trait, making easier to build your DTOs, but it is not required.
 
+## Requirements
+
+- PHP 7.1 or higher.
+
 ## Installation
 
 Install the package via Composer:
@@ -41,6 +51,8 @@ Install the package via Composer:
 ```bash
 composer require zero-to-prod/data-model-factory
 ```
+
+This will add the package to your project’s dependencies and create an autoloader entry for it.
 
 ### Additional Packages
 
@@ -245,3 +257,64 @@ $User = UserFactory::factory()->context();
 echo $User['first_name']; // 'John'
 echo $User['last_name'];  // 'Doe'
 ```
+
+## Local Development
+
+This project provides a convenient `dock` script to simplify local development workflows within Docker containers.
+
+You can use this script to initialize the project, manage Composer dependencies, and run tests in a consistent PHP environment.
+
+### Prerequisites
+
+- Docker installed and running
+- A `.env` file (created automatically via the `dock init`z command, if it doesn’t already exist)
+
+### Initializing
+
+Use the following commands to set up the project:
+
+```shell
+sh dock init
+sh dock composer update
+```
+
+### Testing
+
+This command runs PHPUnit inside the Docker container, using the PHP version specified in your `.env` file.
+You can modify or extend this script to include additional tests or commands as needed.
+
+```shell
+sh dock test
+```
+
+Run the test suite with all versions of php:
+
+```shell
+sh test.sh
+```
+
+### Configuration
+
+Before starting development, verify that your `.env` file contains the correct settings.
+
+You can specify which PHP version to use for local development, debugging, and Composer operations by updating these variables in your `.env` file:
+
+```dotenv
+PHP_VERSION=7.1
+PHP_DEBUG=7.1
+PHP_COMPOSER=7.1
+```
+
+Make sure these values reflect the PHP versions you intend to use.
+If the `.env` file does not exist, run the `sh dock init` command to create one from the `.env.example` template.
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues](https://github.com/zero-to-prod/data-model-factory/issues) page if you want to contribute.
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
