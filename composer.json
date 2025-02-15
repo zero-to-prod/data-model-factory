@@ -31,7 +31,8 @@
     }
   ],
   "require": {
-    "php": ">=7.1.0"
+    "php": ">=7.1.0",
+    "zero-to-prod/factory": "^0.1.0"
   },
   "autoload": {
     "psr-4": {
