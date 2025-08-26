@@ -92,7 +92,7 @@ class User
 
 class UserFactory
 {
-    use \Zerotoprod\DataModelFactory\Factory;
+    use \Zerotoprod\DataModelFactory\DataModelFactory;
 
     /* This is the class to be instantiated with the make() method */
     protected $model = User::class;
@@ -159,7 +159,7 @@ class User
 
 class UserFactory
 {
-    use \Zerotoprod\DataModelFactory\Factory;
+    use \Zerotoprod\DataModelFactory\DataModelFactory;
 
     private function definition(): array
     {
@@ -212,7 +212,7 @@ Use the `merge()` method to merge any new values and update the factory context.
 ```php
 class UserFactory
 {
-    use \Zerotoprod\DataModelFactory\Factory;
+    use \Zerotoprod\DataModelFactory\DataModelFactory;
 
     private function definition(): array
     {
@@ -238,7 +238,7 @@ Use the `context()` method to get the context of the factory.
 ```php
 class UserFactory
 {
-    use \Zerotoprod\DataModelFactory\Factory;
+    use \Zerotoprod\DataModelFactory\DataModelFactory;
 
     private function definition(): array
     {

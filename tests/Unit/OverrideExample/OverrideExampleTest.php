@@ -9,7 +9,7 @@ class OverrideExampleTest extends TestCase
     /**
      * @test
      *
-     * @see Factory
+     * @see DataModelFactory
      */
     public function from(): void
     {
