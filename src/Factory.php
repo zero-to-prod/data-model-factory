@@ -3,6 +3,8 @@
 namespace Zerotoprod\DataModelFactory;
 
 /**
+ * @deprecated Use `DataModelFactory` instead.
+ *
  * Factory for Instantiating a Class.
  *
  * ```
@@ -42,42 +44,11 @@ namespace Zerotoprod\DataModelFactory;
  * echo $User->last_name; // 'Smith'
  * ```
  *
- * @link https://github.com/zero-to-prod/data-model-factory
+ * @link       https://github.com/zero-to-prod/data-model-factory
  *
- * @see  https://github.com/zero-to-prod/data-model
+ * @see        https://github.com/zero-to-prod/data-model
  */
 trait Factory
 {
-    use \Zerotoprod\Factory\Factory;
-
-    /**
-     * Instantiates the class using `$this->context`.
-     *
-     * @link https://github.com/zero-to-prod/data-model-factory
-     *
-     * @see  https://github.com/zero-to-prod/data-model
-     */
-    private function instantiate()
-    {
-        return $this->model::from($this->resolve());
-    }
-
-    /**
-     * Use this to type-hint the proper return in your factory class.
-     *
-     * ```
-     *  public function make(): MyClass
-     *  {
-     *      return $this->instantiate();
-     *  }
-     * ```
-     *
-     * @link https://github.com/zero-to-prod/data-model-factory
-     *
-     * @see  https://github.com/zero-to-prod/data-model
-     */
-    public function make()
-    {
-        return $this->instantiate();
-    }
+    use DataModelFactory;
 }

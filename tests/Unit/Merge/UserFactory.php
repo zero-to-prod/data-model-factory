@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\Merge;
 
-use Zerotoprod\DataModelFactory\Factory;
+use Zerotoprod\DataModelFactory\DataModelFactory;
 
 class UserFactory
 {
-    use Factory;
+    use DataModelFactory;
 
     protected $model = User::class;
 

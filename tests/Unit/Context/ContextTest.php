@@ -9,7 +9,7 @@ class ContextTest extends TestCase
     /**
      * @test
      *
-     * @see Factory
+     * @see DataModelFactory
      */
     public function from(): void
     {
@@ -22,7 +22,7 @@ class ContextTest extends TestCase
     /**
      * @test
      *
-     * @see Factory
+     * @see DataModelFactory
      */
     public function context(): void
     {

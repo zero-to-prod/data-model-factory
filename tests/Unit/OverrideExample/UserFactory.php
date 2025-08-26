@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\OverrideExample;
 
-use Zerotoprod\DataModelFactory\Factory;
+use Zerotoprod\DataModelFactory\DataModelFactory;
 
 class UserFactory
 {
-    use Factory;
+    use DataModelFactory;
 
     private function definition(): array
     {

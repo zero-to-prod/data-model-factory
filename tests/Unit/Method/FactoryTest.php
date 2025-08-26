@@ -9,7 +9,7 @@ class FactoryTest extends TestCase
     /**
      * @test
      *
-     * @see Factory
+     * @see DataModelFactory
      */
     public function from(): void
     {
@@ -24,7 +24,7 @@ class FactoryTest extends TestCase
     /**
      * @test
      *
-     * @see Factory
+     * @see DataModelFactory
      */
     public function nested_element(): void
     {
@@ -38,7 +38,7 @@ class FactoryTest extends TestCase
     /**
      * @test
      *
-     * @see Factory
+     * @see DataModelFactory
      */
     public function nested_array(): void
     {
