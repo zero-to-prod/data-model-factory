@@ -17,4 +17,16 @@ class FactoryTest extends TestCase
 
         self::assertEquals('John', $User->first_name);
     }
+
+    /**
+     * @test
+     *
+     * @see DataModelFactory
+     */
+    public function make(): void
+    {
+        $User = User::factory()->make([User::first_name => 'Jane']);
+
+        self::assertEquals('Jane', $User->first_name);
+    }
 }

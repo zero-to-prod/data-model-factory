@@ -57,9 +57,9 @@ trait DataModelFactory
      *
      * @see  https://github.com/zero-to-prod/data-model
      */
-    private function instantiate()
+    private function instantiate(array $context = [])
     {
-        return $this->model::from($this->resolve());
+        return $this->model::from($this->resolve($context));
     }
 
     /**
@@ -76,8 +76,8 @@ trait DataModelFactory
      *
      * @see  https://github.com/zero-to-prod/data-model
      */
-    public function make()
+    public function make(array $context = [])
     {
-        return $this->instantiate();
+        return $this->instantiate($context);
     }
 }
