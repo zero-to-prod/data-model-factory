@@ -129,9 +129,9 @@ class UserFactory
     }
     
     /* Optionally implement for better static analysis */
-    public function make(): User
+    public function make(array $context = []): User
     {
-        return $this->instantiate();
+        return $this->instantiate($context);
     }
 }
 
