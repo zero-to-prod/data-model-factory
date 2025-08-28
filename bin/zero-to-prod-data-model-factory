@@ -16,7 +16,7 @@ if (isset($argv[1])) {
     $target_path = rtrim($argv[1], '/').'/';
 }
 
-$source_file = getcwd().'/README.md';
+$source_file = __DIR__.'/../README.md';
 
 if (!file_exists($source_file)) {
     fwrite(STDERR, "Error: Not found $source_file\n");
