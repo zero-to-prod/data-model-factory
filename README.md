@@ -63,10 +63,10 @@ This can be done using the included script:
 
 ```bash
 # Publish to default location (./docs/zero-to-prod/data-model-factory)
-vendor/bin/zero-to-prod-factory
+vendor/bin/zero-to-prod-data-model-factory
 
 # Publish to custom directory
-vendor/bin/zero-to-prod-factory /path/to/your/docs
+vendor/bin/zero-to-prod-data-model-factory /path/to/your/docs
 ```
 
 #### Automatic Documentation Publishing
